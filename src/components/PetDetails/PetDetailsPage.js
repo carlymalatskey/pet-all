@@ -3,10 +3,9 @@ import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import "./PetDetailsPage.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 import api from "./../../api";
-import { alignPropType } from "react-bootstrap/esm/DropdownMenu";
 import PetDetailsText from "./PetDetailsText.js";
 
 class PetDetailsPage extends React.Component {
