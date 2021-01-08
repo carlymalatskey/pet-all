@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "";
+const baseUrl = "http://localhost:5000";
 const axiosWithOptions = axios.create({
     withCredentials: true
 })
