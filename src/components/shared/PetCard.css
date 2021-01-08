@@ -47,7 +47,7 @@
 .heart-icon {
     font-size: 24px;
     padding-right: 2.8px; 
-    margin-top: 3.5px; 
+    margin-top: 6.5px; 
 }
 
 .unsaved {
@@ -72,4 +72,6 @@
     color: rgba(255, 255, 255, 0.699);
     border-radius: 50%;
     font-size: 30px;
+    margin-top: 3px;
+
 }
