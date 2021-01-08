@@ -12,8 +12,6 @@ class EditPetForm extends React.Component {
             updatePicture: undefined
         }
     }
-
-
     async componentDidMount() {
         let petId = this.props.match.params.id;
         let response = await api.pet.getPetById(petId);
@@ -114,6 +112,7 @@ class EditPetForm extends React.Component {
     }
 
     handleUpdatedPet = async (event) => {
+        let petId = this.props.match.params.id;
         event.preventDefault(); 
         try {
             let data = new FormData()
@@ -123,7 +122,7 @@ class EditPetForm extends React.Component {
             Object.keys(this.state.updatedPet).forEach(key => {
                 data.append(key, this.state.updatedPet[key]);
             })
-            let response = await api.pet.updatePet(data); 
+            let response = await api.pet.updatePet(petId, data); 
             if (response.data.status === "success") {
                 alert("Successfully updated pet profile");
                 window.location.reload();
@@ -165,12 +164,12 @@ class EditPetForm extends React.Component {
                             value={this.state.updatedPet.name}/>
             </Form.Group>
             <Form.Group>
-            {/*TODO: change type to select Available/Fostered/Adopted */}
-              <Form.Control type="text" 
-                            placeholder="Adoption Status" 
-                            className="pet-info-section" 
-                            onChange={(event) => this.onInputChange(event, constants.animalInputTypes.ADOPTION_STATUS)}
-                            value={this.state.updatedPet.adoptionStatus}/>
+                <Form.Label className="sub-heading" >Adoption Status?</Form.Label>
+                    <Form.Control as="select" onChange={(event) => this.onInputChange(event, constants.animalInputTypes.ADOPTION_STATUS)}>
+                        <option value={constants.adoptionStatusTypes.AVAILABLE}>Available</option>
+                        <option value={constants.adoptionStatusTypes.FOSTERED}>Fostered</option>
+                        <option value={constants.adoptionStatusTypes.ADOPTED}>Adopted</option>
+                    </Form.Control> 
             </Form.Group>
             <Form.Group>
               <Form.Control type="number" 
