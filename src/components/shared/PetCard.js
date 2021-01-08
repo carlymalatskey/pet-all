@@ -2,7 +2,7 @@ import React from "react";
 import Card from 'react-bootstrap/Card';
 import "./PetCard.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle, faHeart, faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faCircle, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 import api from "./../../api";
 
