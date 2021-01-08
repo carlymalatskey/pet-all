@@ -91,6 +91,10 @@ class PetDetailsPage extends React.Component {
         return this.props.user.savedPets.includes(petId);
     }
 
+    isUserOwningPet() {
+        let petId = this.props.match.params.id; 
+        return this.props.user.fosteredPets.includes(petId) || this.props.user.adoptedPets.includes(petId); 
+    }
     render() {
         return (
             <div>
@@ -115,7 +119,7 @@ class PetDetailsPage extends React.Component {
                                         :
                                             <Button variant="primary" type="submit" className="action-button-style" onClick={() => this.handleSave()}><FontAwesomeIcon className="heart-icon" icon={faHeart}/> Favorite Me!</Button>
                                         }
-                                    {this.state.pet.adoptionStatus.toLowerCase() === "adopted" || this.state.pet.adoptionStatus.toLowerCase() === "fostered" ?
+                                    {this.isUserOwningPet() ?
                                         <div>
                                             <Button variant="primary" type="submit" className="action-button-style" onClick={() => this.handleReturn()}>Return Me</Button>
                                         </div>
