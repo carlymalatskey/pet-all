@@ -15,6 +15,7 @@ app.use(cors({
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+
 app.use(router);
 
 function logErrors (err, req, res, next) {
@@ -33,6 +34,14 @@ app.use(logErrors);
 app.get("/healthcheck", (_, res) => {
     res.send({"status": "alive"});
 });
+
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, '..', 'build/index.html'), function(err) {
+        if (err) {
+            res.status(500).send(err)
+        }
+    })
+})
 
 const PORT = process.env.PORT || config.port;
 app.listen(PORT, () => {
