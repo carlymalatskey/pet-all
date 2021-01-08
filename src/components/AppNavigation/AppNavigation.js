@@ -32,7 +32,7 @@ class AppNavigation extends React.Component {
              <div className="right-side-navbar">
                 <Link className="heart-label" to="/mypets"><FontAwesomeIcon className="heart-navbar-icon" icon={faHeart}/></Link>
                 <div>
-                  {isSignedIn && this.props.user.isAdmin && <FontAwesomeIcon className="navbar-icons" icon={faUserShield}/>}
+                  {isSignedIn && this.props.user.isAdmin && <FontAwesomeIcon className="navbar-icons user-admin-icon" icon={faUserShield}/>}
                 </div>
                 <NavDropdown title={<div className="username-label" ><FontAwesomeIcon className="navbar-icons" icon={faUserAlt}/>{this.props.user.displayName}</div>}>
                   <div className="dropdown-section">

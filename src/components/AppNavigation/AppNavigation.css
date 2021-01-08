@@ -48,6 +48,11 @@
     padding-right: 2px; 
 }
 
+.user-admin {
+    color: white;
+    font-size: 10px; 
+}
+
 .username-label {
     margin-top: 6px; 
     text-decoration: none; 
