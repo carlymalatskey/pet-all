@@ -14,8 +14,8 @@
 }
 
 .pet-image {
-    width: 100px; 
-    margin-left: 5px; 
+    width: 12rem; 
+    border-radius: 4px;  
 }
 
 .pet-name {
@@ -41,20 +41,21 @@
     display: inline-block; 
 }
 
-.favorite-button {
-    border-radius: 50%; 
-    width: 30px; 
-    height: 30px;
-    background-color: #5fa2e9;
-    float: right; 
-}
-
-.saved-heart-icon {
+.saved {
     color: #5fa2e9; 
 }
+.heart-icon {
+    font-size: 24px;
+    padding-right: 2.6px; 
+    margin-top: 3.5px; 
+}
 
-.unsaved-heart-icon {
+.unsaved {
     color:  gray; 
+}
+
+.top-card {
+    display: inline-flex; 
 }
 
 .hover-button:hover {
@@ -62,6 +63,13 @@
 }
 
 .general-icon {
-    font-size: 20px;
-    padding-top: 2px; 
+    float: right;
+    margin-right: 5px; 
+    margin-left: -50px;
+}
+
+.background {
+    color: rgba(255, 255, 255, 0.699);
+    border-radius: 50%;
+    font-size: 30px;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import Card from 'react-bootstrap/Card';
 import "./PetCard.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faCircle, faHeart, faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 import api from "./../../api";
 
@@ -39,13 +39,21 @@ class PetCard extends React.Component {
         return (
             <div>
                 <Card className="pet-card">
-                    <Card.Img variant="top" className="pet-image" src={''}/>
-                    {isPetSaved ? 
-                        <FontAwesomeIcon className="hover-button saved-heart-icon general-icon" icon={faHeart} onClick={() => this.handleUnsave()}/>
-                        :
-                        <FontAwesomeIcon className="hover-button unsaved-heart-icon general-icon" icon={faHeart} onClick={() => this.handleSave()}/>
-                    }                    <Card.Body>
+                    <div className="top-card">
                         <Card.Img className="pet-image" src={this.props.pet.picture}></Card.Img>
+                        {isPetSaved ? 
+                            <Card.ImgOverlay>
+                                <FontAwesomeIcon className="hover-button background general-icon" icon={faCircle}/>
+                                <FontAwesomeIcon className="hover-button saved heart-icon general-icon" icon={faHeart} onClick={() => this.handleUnsave()}/>
+                            </Card.ImgOverlay>
+                            :
+                            <Card.ImgOverlay>
+                                 <FontAwesomeIcon className="hover-button background general-icon" icon={faCircle}/>
+                                <FontAwesomeIcon className="hover-button unsaved heart-icon general-icon" icon={faHeart} onClick={() => this.handleSave()}/>
+                            </Card.ImgOverlay>
+                        }
+                    </div>
+                    <Card.Body>
                         <Card.Title className="pet-name">{this.props.pet.name}</Card.Title>
                         <Card.Text className="pet-details">
                             {this.props.pet.adoptionStatus} <FontAwesomeIcon className="pet-card-dot" icon={faCircle}/> {this.props.pet.breed}
