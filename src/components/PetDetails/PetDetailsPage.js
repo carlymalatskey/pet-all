@@ -115,9 +115,9 @@ class PetDetailsPage extends React.Component {
                                     <div className="action-buttons">
                                         {this.isPetSaved() ? 
 
-                                            <Button variant="primary" type="submit" className="action-button-style" onClick={() => this.handleRemovedSavedPet()}><FontAwesomeIcon className="heart-icon" icon={faHeart}/> Unfavorite Me :(</Button>
+                                            <Button variant="primary" type="submit" className="action-button-style" onClick={() => this.handleRemovedSavedPet()}><FontAwesomeIcon icon={faHeart}/> Unfavorite Me :(</Button>
                                         :
-                                            <Button variant="primary" type="submit" className="action-button-style" onClick={() => this.handleSave()}><FontAwesomeIcon className="heart-icon" icon={faHeart}/> Favorite Me!</Button>
+                                            <Button variant="primary" type="submit" className="action-button-style" onClick={() => this.handleSave()}><FontAwesomeIcon icon={faHeart}/> Favorite Me!</Button>
                                         }
                                     {this.isUserOwningPet() ?
                                         <div>
