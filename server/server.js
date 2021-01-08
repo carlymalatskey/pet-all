@@ -25,12 +25,6 @@ function logErrors (err, req, res, next) {
 
 app.use(logErrors);
 
-// function clientErrorHandler (err, _, res) {
-//     res.status(500).send({ status: "error", error: err.stack });
-// }
-
-// app.use(clientErrorHandler);
-
 app.get("/healthcheck", (_, res) => {
     res.send({"status": "alive"});
 });

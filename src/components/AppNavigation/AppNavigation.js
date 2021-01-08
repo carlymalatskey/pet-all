@@ -3,7 +3,7 @@ import "./AppNavigation.css"
 import { Link } from "react-router-dom";
 import Logo from "./../../assets/Logo2.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaw, faUserAlt, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faPaw, faUserAlt, faHeart, faUserShield } from '@fortawesome/free-solid-svg-icons';
 import Image from "react-bootstrap/Image";
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Nav from 'react-bootstrap/Nav';
@@ -28,12 +28,12 @@ class AppNavigation extends React.Component {
                 <Link className="nav-bar-labels" to="/search"><FontAwesomeIcon className="navbar-icons" icon={faPaw}/>Search</Link>
             </div>
           </div>
-          <div>
-            {isSignedIn && this.props.user.isAdmin && <div>ADMIN</div>}
-          </div>
           {isSignedIn &&
              <div className="right-side-navbar">
                 <Link className="heart-label" to="/mypets"><FontAwesomeIcon className="heart-navbar-icon" icon={faHeart}/></Link>
+                <div>
+                  {isSignedIn && this.props.user.isAdmin && <FontAwesomeIcon className="navbar-icons" icon={faUserShield}/>}
+                </div>
                 <NavDropdown title={<div className="username-label" ><FontAwesomeIcon className="navbar-icons" icon={faUserAlt}/>{this.props.user.displayName}</div>}>
                   <div className="dropdown-section">
                       <NavDropdown.Item className="dropdown-labels">
