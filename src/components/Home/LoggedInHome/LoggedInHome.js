@@ -16,7 +16,6 @@ class LoggedInHome extends React.Component {
                         they feel safe and secure.
                     </h4>
                 </div>
-                <Link to="/mypets"> View My Pets</Link>
             </div>
         );
     }

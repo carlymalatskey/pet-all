@@ -26,6 +26,7 @@ class AppNavigation extends React.Component {
             <div className="left-header-labels">
                 <Link className="nav-bar-labels" to="/home"><FontAwesomeIcon className="navbar-icons" icon={faPaw}/>Home</Link>
                 <Link className="nav-bar-labels" to="/search"><FontAwesomeIcon className="navbar-icons" icon={faPaw}/>Search</Link>
+                <Link to="/mypets"className="nav-bar-labels"><FontAwesomeIcon className="navbar-icons" icon={faPaw}/>My Pets</Link>
             </div>
           </div>
           {isSignedIn &&
