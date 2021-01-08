@@ -25,8 +25,8 @@ const api = {
         removedSavedPet: (petId) => {
             return axiosWithOptions.delete(`${baseUrl}/pet/${petId}/save`);
         },
-        updatePet: (updatedPet) => {
-            return axiosWithOptions.put(`${baseUrl}/pet/${updatedPet.id}`, updatedPet);
+        updatePet: (petId, updatedPet) => {
+            return axiosWithOptions.put(`${baseUrl}/pet/${petId}`, updatedPet);
         }
     },
     user: {
