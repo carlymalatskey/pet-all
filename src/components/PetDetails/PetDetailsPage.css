@@ -1,0 +1,64 @@
+.under-picture-section {
+    display: flex; 
+}
+
+.action-buttons-section {
+    background-color:#2977C9; 
+    border: none; 
+    border-radius: 6px; 
+    height: 140px;
+    width: 200px; 
+    padding-top: 5px; 
+    padding-left: 25px;
+    padding-right: 25px; 
+    margin-left: 10px;
+    display: grid; 
+    margin-top: 10px; 
+}
+
+.action-button-style {
+    margin-top: 10px; 
+    font-family: 'Poppins', sans-serif;
+    display: block;
+    background-color: white; 
+    width: 190px;
+    border-radius: 8px; 
+    border: none; 
+    cursor: pointer;
+    height: 25px; 
+}
+
+.favorite-button > .heart-icon {
+    color: white; 
+}
+
+.favorite-button {
+    font-family: 'Poppins', sans-serif;
+    display: block;
+    background-color: #2977C9; 
+    border: 2px solid white !important; 
+    color: white; 
+    width: 190px;
+    border-radius: 8px; 
+    border: none; 
+    cursor: pointer;
+    height: 25px; 
+}
+
+.action-buttons {
+    margin-top: 10px; 
+}
+
+.edit-pet {
+    background-color: #2977C9;
+    color: white; 
+    margin-left: 35px;
+
+}
+
+.pet-image-heading {
+    margin-top: 5px; 
+    width: 50%; 
+    height: 50%;
+    border-radius: 4px; 
+}

@@ -1,0 +1,61 @@
+.about-pet-section {
+    border: none; 
+    background-color: white; 
+    border-radius: 6px; 
+    font-family: 'Poppins', sans-serif;
+    width: 300px; 
+    color: rgb(65, 63, 63); 
+    padding-top: 5px; 
+    padding-left: 25px;
+    padding-right: 25px; 
+}
+
+.pet-card-dot {
+    margin-left: 2.5px; 
+    margin-right: 2.5px; 
+    margin-bottom: .5px;
+}
+
+.pet-name-heading {
+    font-weight: bolder; 
+}
+
+.pet-subsection-details {
+    font-size: 10px; 
+    margin-top: -8px;
+    padding-bottom: 8px; 
+    border-bottom: 0.5px solid black; 
+}
+
+
+.about-me-section {
+    border-bottom: 0.5px solid black; 
+}
+.about-me-section, .meet-me-section {
+    font-weight: bolder; 
+    font-size: 14px;
+}
+.about-me-section > h2, .meet-me-section > h2 {
+    margin-bottom: 2px; 
+    margin-top: 3px;
+}
+
+.about-subheadings {
+    font-weight: bold; 
+    font-size: 12px;
+    margin: 0; 
+    margin-bottom: 2px; 
+}
+
+.about-subheadings-answers, .meet-me-subheadings-answers {
+    font-size: 10px;
+    font-weight: normal;
+}
+
+.about-subheadings-answers {
+    display: inline; 
+}
+
+.color, .diet-rest{
+    display: inline; 
+}

@@ -1,0 +1,32 @@
+.search-overall-section {
+    padding: 10px 20px 25px;
+    margin-top: 12px; 
+    background-color: white; 
+    border-radius: 10px;
+    box-shadow: 0px -1px 1px rgba(0,0,0,0.08), 1px 0px 1px rgba(0,0,0,0.08), -1px 0px 1px rgba(0,0,0,0.08), 0px 1px 1px rgba(0,0,0,0.08)
+}
+
+.search-pets-input {
+    width: 500px;
+    height: 30px;
+    border-radius: 10px; 
+    color: black; 
+    border: 0.5px solid gray; 
+}
+
+.search-pets-input::placeholder {
+    font-size: 12px; 
+}
+
+.search-pets-input:hover {
+    border: 1px solid #2977C9; 
+}
+
+.search-page-checkboxes {
+    display: inline-flex; 
+    font-size: 10px; 
+}
+
+.pet-cards-results-section {
+    display: inline-block; 
+}

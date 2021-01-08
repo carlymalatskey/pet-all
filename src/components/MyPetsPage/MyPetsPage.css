@@ -1,0 +1,33 @@
+.find-a-pet-label {
+    display: block;
+    background-color:#2977C9; 
+    border-radius: 8px; 
+    border: none; 
+    color: white; 
+    cursor: pointer;
+    width: 100px; 
+    text-decoration: none; 
+    display: inline-block; 
+}
+
+.unselected-buttons {
+    margin-top: 10px; 
+    padding: 5px; 
+    background-color: rgb(168, 166, 168); 
+    border-radius: 2px; 
+    color: white; 
+    border: none; 
+    cursor: pointer;
+    text-decoration: none; 
+}
+
+.selected-btn {
+    margin-top: 10px; 
+    padding: 5px; 
+    background-color: #2977C9; 
+    border-radius: 2px; 
+    border: none; 
+    color: white; 
+    cursor: pointer;
+    text-decoration: none; 
+}

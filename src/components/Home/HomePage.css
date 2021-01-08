@@ -1,0 +1,17 @@
+.homepage-header {
+    color: #2977C9;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 60px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .homepage-about-text {
+    font-size: 14px; 
+    color: #2977C9;
+  }
+
+.website-section {
+  margin-left: 30px; 
+  margin-right: 30px;
+}

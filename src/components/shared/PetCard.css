@@ -1,0 +1,73 @@
+.pet-card {
+    width: 12rem; 
+    background-color: white; 
+    border-radius: 4px; 
+    margin-top: 10px; 
+    box-shadow: 0px -1px 1px rgba(0,0,0,0.08), 1px 0px 1px rgba(0,0,0,0.08), -1px 0px 1px rgba(0,0,0,0.08), 0px 1px 1px rgba(0,0,0,0.08);
+    margin-right: 5px; 
+    margin-left: 5px; 
+}
+
+.pet-card-dot {
+    margin-top: -2px;
+    font-size: 5px;
+}
+
+.pet-image {
+    width: 100px; 
+    margin-left: 5px; 
+}
+
+.pet-name {
+    color: #2977C9;
+    font-weight: bold; 
+}
+
+.pet-details {
+    font-size: 12px; 
+}
+
+.pet-card-button {
+    margin-bottom: 5px; 
+    display: block;
+    background-color:#2977C9; 
+    border-radius: 4px; 
+    border: none; 
+    color: white; 
+    cursor: pointer;
+    width: 170px; 
+    font-size: 12px; 
+    text-decoration: none; 
+    display: inline-block; 
+}
+
+.favorite-button {
+    border-radius: 50%; 
+    width: 30px; 
+    height: 30px;
+    background-color: #5fa2e9;
+    float: right; 
+}
+
+.heart-icon {
+    color:  #2977C9; 
+    font-size: 20px;
+    padding-top: 2px; 
+}
+
+.saved-heart-icon {
+    color: red; 
+}
+
+.unsaved-heart-icon {
+    color:  gray; 
+}
+
+.hover-button:hover {
+    cursor: pointer;
+}
+
+.general-icon {
+    font-size: 20px;
+    padding-top: 2px; 
+}
