@@ -131,9 +131,9 @@ class PetDetailsPage extends React.Component {
                                                     <Button variant="primary" type="submit" className="action-button-style" onClick={() => this.handleAdopt()}>Adopt Me</Button>
                                                 </div>
                                             : 
-                                                <div>
-                                                    This pet is not available for adoption or fostering. Either: 
-                                                    <Link to="/search" onClick={() => this.handleUpdatedPet()}> Find more pets</Link>
+                                                <div className="label-not-available">
+                                                    This pet is not available for adoption or fostering. 
+                                                    <Link className="label-not-available" to="/search"> Find more pets</Link>
                                                 </div>
                                             }
                                         </div>
