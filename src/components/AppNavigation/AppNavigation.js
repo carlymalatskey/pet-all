@@ -29,7 +29,6 @@ class AppNavigation extends React.Component {
             </div>
           </div>
           <div>
-            {/*TODO: take away this line: ???*/} 
             {isSignedIn && this.props.user.isAdmin && <div>ADMIN</div>}
           </div>
           {isSignedIn &&

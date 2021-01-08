@@ -25,7 +25,7 @@ const cookies = new Cookies();
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { //TODO: consider what to do with user
+    this.state = { 
       isSignedIn: false,
       user: undefined
     };

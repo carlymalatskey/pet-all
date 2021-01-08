@@ -13,9 +13,17 @@ class ProfileSettingsPage extends React.Component {
     }
 
     componentDidMount() {
+      this.setState({
+        updatedUser: this.props.user
+      })
+    }
+
+    componentWillReceiveProps(newProps) {
+      if (newProps.user) {
         this.setState({
-          updatedUser: this.props.user
+          updatedUser: newProps.user
         })
+      }
     }
 
     onUpdateUserInfo(event) {
@@ -41,7 +49,7 @@ class ProfileSettingsPage extends React.Component {
               }
             })
             break;
-          case constants.useruserInputTypes.PHONE_NUMBER:
+          case constants.userInputTypes.PHONE_NUMBER:
             this.setState({
                 updatedUser: {
                     ...this.state.updatedUser,
@@ -65,15 +73,16 @@ class ProfileSettingsPage extends React.Component {
                 }
             })
             break;
-          default:
+        default:
             break;
         }
       }
 
 
     render() {
+      if (this.state.updatedUser) {
         return (
-            <Form className="form-section">            
+          <Form className="form-section">            
             <Form.Label>Update My Account!</Form.Label>
             <Form.Group>
               <Form.Control type="email" 
@@ -116,6 +125,9 @@ class ProfileSettingsPage extends React.Component {
             </Button>
           </Form>
         )
+      } else {
+        return (<div>Not loaded yet</div>)
+      }
     }
 }
 

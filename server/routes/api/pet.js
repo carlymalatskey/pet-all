@@ -50,7 +50,7 @@ router.post("/", upload.single("file"), async (req, res, next) => {
             let addedPet = await petCollection.doc(pet.id).set(pet.getJson());
             res.send({"status": "success", "pet": addedPet });
         } catch (error) {
-            res.send({"status": "error", error: error.message});
+            res.send({"status": "error", "message": error.message});
         }
         res.status(200).send({ 
             fileName: req.file.originalname,
@@ -64,10 +64,13 @@ Route: ‘/pet/:id’ [GET]
 Get a pet by ID should take an id and return the corresponding pet from the database. 
 */
 router.get("/:id", async(req, res) => {
-    //TODO: validate whether pet exists?
     const id = req.params.id;
     let currentPet = await getPetById(id);
-    res.send({currentPet});
+    if (currentPet) {
+        res.send({currentPet});
+    } else {
+        res.send({status: "error", message: err.message})
+    }
 });
 
 /*
@@ -80,22 +83,19 @@ Store pet information in the database
 Fields: Same as Add Pet API
 */
 router.put("/:id", upload.single("file"), async (req, res, next) => {
-    // two cases: with file and without file
-
-    // without file:
     if (typeof req.body.isHypoallergenic == "string") {
         req.body.isHypoallergenic = (req.body.isHypoallergenic == "true");
     }
     
     if (!req.file) {
         try {
-            let pet = Pet.createPetFromAPI(req.body);
+            let pet = Pet.creat4ePetFromAPI(req.body);
             let updatedPet = await petCollection.doc(pet.id).update(pet.getJson());
             res.send({"status": "success", "pet": updatedPet });
         } catch (error) {
-            res.send({"status": "error", error: error.message});
+            res.send({"status": "error", "message": error.message});
         }
-    } else { // with file: 
+    } else {
         const blob = bucket.file(req.file.originalname);
         const blobStream = blob.createWriteStream({
             metadata: {
@@ -112,7 +112,7 @@ router.put("/:id", upload.single("file"), async (req, res, next) => {
                 let updatedPet = await petCollection.doc(pet.id).update(pet.getJson());
                 res.send({"status": "success", "pet": updatedPet });
             } catch (error) {
-                res.send({"status": "error", error: error.message});
+                res.send({"status": "error", "message": error.message});
             }
             res.status(200).send({ 
                 fileName: req.file.originalname,
@@ -176,17 +176,26 @@ This API also should change the pet’s adoption status.
 router.post("/:id/adopt", async (req, res) => {
     let currentUserId = req.cookies[config.authentication.userCookie];
     let currentUser = await getUserById(currentUserId);
-    let petId = req.params.id;
-    if (currentUser.isAllowedToAdopt(petId)) {
-        currentUser.adoptPet(petId);
-        await updateUser(currentUserId, currentUser);
-        let currentPet = await getPetById(petId);
-        currentPet.adoptionStatus = "adopted";
-        await updatePet(petId, currentPet);
-        res.send({"status": "success", "message": "The user has adopted this pet."});
-    } else { 
-        res.send({"status": "error", "message": "User is currently not allowed to adopt this pet."});
-    }    
+    if (currentUser) {
+        let petId = req.params.id;
+        if (currentUser.isAllowedToAdopt(petId)) {
+            currentUser.adoptPet(petId);
+            await updateUser(currentUserId, currentUser);
+            let currentPet = await getPetById(petId);
+            if (currentPet) {
+                currentPet.adoptionStatus = "adopted";
+                await updatePet(petId, currentPet);
+                res.send({"status": "success", "message": "The user has adopted this pet."});
+            } else {
+                res.send({status: "error", message: `Pet with ID ${petId} couldn't be found`});
+            }
+            
+        } else { 
+            res.send({"status": "error", "message": "User is currently not allowed to adopt this pet."});
+        }
+    } else {
+        res.send({status: "error", message: "Current user could not be found"});
+    }
 });
 
 /*
@@ -197,16 +206,20 @@ This API also should change the pet’s foster status.
 router.post("/:id/foster", async (req, res) => {
     let currentUserId = req.cookies[config.authentication.userCookie]; 
     let currentUser = await getUserById(currentUserId);
-    let petId = req.params.id;
-    if (currentUser.isAllowedToFoster(petId)) {
-        currentUser.fosterPet(petId);
-        await updateUser(currentUserId, currentUser);
-        let currentPet = await getPetById(petId);
-        currentPet.adoptionStatus = "fostered";
-        await updatePet(petId, currentPet);
-        res.send({"status": "success", "message": "The user has fostered this pet."});
+    if (currentUser) {
+        let petId = req.params.id;
+        if (currentUser.isAllowedToFoster(petId)) {
+            currentUser.fosterPet(petId);
+            await updateUser(currentUserId, currentUser);
+            let currentPet = await getPetById(petId);
+            currentPet.adoptionStatus = "fostered";
+            await updatePet(petId, currentPet);
+            res.send({"status": "success", "message": "The user has fostered this pet."});
+        } else {
+            res.send({"status": "error", "message": "User is currently not allowed to foster this pet."});
+        }
     } else {
-        res.send({"status": "error", "message": "User is currently not allowed to foster this pet."});
+        res.send({status: "error", message: `Couldn't retrieve current user`});
     }
 });
 
@@ -277,7 +290,6 @@ This api allows a user to get the pets owned by (or saved) by a user based on th
 router.get("/user/:userId", async (req, res) => {
     let userId = req.params.userId; 
     let currentUser = await getUserById(userId);
-    //TODO: handle in sign up when they have no pets
     let usersFosteredPets = currentUser.fosteredPets;
     let usersAdoptedPets = currentUser.adoptedPets;
     let usersSavedPets = currentUser.savedPets;

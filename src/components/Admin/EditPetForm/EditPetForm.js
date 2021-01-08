@@ -88,6 +88,14 @@ class EditPetForm extends React.Component {
                     }
                 })
                 break;
+            case constants.animalInputTypes.IS_HYPOALLERGENIC: 
+                this.setState({
+                    updatedPet: {
+                        ...this.state.updatedPet,
+                        isHypoallergenic: event.target.value == "0" ? true : false
+                    }
+                })
+                break;
             case constants.animalInputTypes.BIO: 
                 this.setState({
                     updatedPet: {
@@ -117,28 +125,19 @@ class EditPetForm extends React.Component {
             })
             let response = await api.pet.updatePet(data); 
             if (response.data.status === "success") {
-            alert("Successfully updated pet profile");
-            this.setState({
-                updatedPet: response.data.updatedPet,
-            }); 
+                alert("Successfully updated pet profile");
+                window.location.reload();
             } else {
-            alert("Unable to update pet profile");
+                alert("Unable to update pet profile");
             }
         } catch (error) {
-            alert("Error in updating profile: " + error);
+            alert("Error in updating pet: " + error);
         }
     }
 
-    handleisHypoAllergenicInput(event, type) {
-        if(event.currentTarget.checked) {
-          this.setState({
-            updatedPet: {
-              ...this.state.updatedPet, 
-              isHypoallergenic: type 
-            }
-          })
-        } 
-      }
+    getDefaultHypoallergenicValue() {
+        return this.state.updatedPet.isHypoallergenic ? "0" : "1";
+    }
  
     render() {
         return(
@@ -203,9 +202,11 @@ class EditPetForm extends React.Component {
             </Form.Group>
             <Form.Group>
                 <Form.Label className="sub-heading" >Hypoallergenic?</Form.Label>
-                <Form.Check type="checkbox" className="checkboxes" label="True" onChange={(e) => this.handleisHypoAllergenicInput(e, constants.animalInputTypes.IS_HYPOALLERGENIC_TRUE)}/>
-                <Form.Check type="checkbox" className="checkboxes" label="False" onChange={(e) => this.handleisHypoAllergenicInput(e, constants.animalInputTypes.IS_HYPOALLERGENIC_FALSE)}/>
-            </Form.Group>
+                <Form.Control as="select" defaultValue={() => this.getDefaultHypoallergenicValue()} onChange={(event) => this.onInputChange(event, constants.animalInputTypes.IS_HYPOALLERGENIC)}>
+                    <option value={"0"}>Yes</option>
+                    <option value={"1"}>No</option>
+                </Form.Control>          
+            </Form.Group> 
             <Form.Group>
               <Form.Control type="text" 
                             placeholder="Diet Restrictions" 
@@ -213,12 +214,6 @@ class EditPetForm extends React.Component {
                             onChange={(event) => this.onInputChange(event, constants.animalInputTypes.DIET_RESTRICTIONS)}
                             value={this.state.updatedPet.dietRest}/>
             </Form.Group>
-            {/* <Form.Group>
-                <Form.Label className="sub-heading" >Change Picture?</Form.Label>
-                <Form.Check type="checkbox" className="checkboxes" label="Yes" onChange={(e) => this.handleChangePictureInput(e, constants.animalInputTypes.CHANGE_PICTURE_TRUE)}/>
-                <Form.Check type="checkbox" className="checkboxes" label="No" onChange={(e) => this.handleChangePictureInput(e, constants.animalInputTypes.CHANGE_PICTURE_FALSE)}/>
-            </Form.Group> */}
-
             <div>
                 <img src={this.state.updatedPet.picture} style={{width: "50%"}}/>
                 <Form.Group>

@@ -67,21 +67,13 @@ class AdvancedSearch extends React.Component {
         }
     }
 
-    handleAnimalTypeInput(event, type) {
-        // TODO: handle single select in UI
-        if (event.currentTarget.checked) {
-            this.setState({
-                type: type
-            });
-        } else {
-            this.setState({
-                type: ''
-            })
-        }
+    handleAnimalTypeInput(event) {
+        this.setState({
+            type: event.target.value
+        });
     }
     
     render() {
-        console.log(this.state.type);
         return (
             <div className="adv-search-section-with-button">
                 <div className="advanced-search-section">
@@ -113,10 +105,10 @@ class AdvancedSearch extends React.Component {
                     </Form>
                     <Form className="individual-adv-search-sections">             
                         <Form.Label className="advanced-search-titles">Type</Form.Label>
-                        <Form.Group className="advanced-search-page-checkboxes">
-                            <Form.Check type="checkbox" className="advanced-search-options" label="Dog" onChange={(e) => this.handleAnimalTypeInput(e, consts.animalTypes.DOG)}/>
-                            <Form.Check type="checkbox" className="advanced-search-options" label="Cat" onChange={(e) => this.handleAnimalTypeInput(e, consts.animalTypes.CAT)}/>
-                        </Form.Group>
+                        <Form.Control as="select" onChange={(event) => this.handleAnimalTypeInput(event)}>
+                            <option value={consts.animalTypes.DOG}>Dog</option>
+                            <option value={consts.animalTypes.CAT}>Cat</option>
+                        </Form.Control> 
                     </Form>
                     <Form className="individual-adv-search-sections">             
                         <Form.Label className="advanced-search-titles">Name</Form.Label>

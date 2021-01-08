@@ -10,9 +10,19 @@ class AddPetForm extends React.Component {
         super(props);
         this.state = {
             newPet: {
+              type: "",
+              name: "",
+              color: "",
+              breed: "",
+              height: 0,
+              weight: 0,
+              adoptionStatus: "available",
+              color: "",
+              isHypoallergenic: true,
+              bio: "",
+              dietRest: []
             },
-            picture: undefined,
-            isHypoallergenicChecked: true
+            picture: undefined
         }
     }
 
@@ -82,19 +92,27 @@ class AddPetForm extends React.Component {
                     }
                 });
               break;
+            case constants.animalInputTypes.IS_HYPOALLERGENIC: 
+              this.setState({
+                  newPet: {
+                      ...this.state.newPet,
+                      isHypoallergenic: event.target.value == "0" ? true : false
+                  }
+              })
+              break;
             case constants.animalInputTypes.BIO:
                 this.setState({
                     newPet: {
-                    ...this.state.newPet,
-                    bio: event.target.value
+                      ...this.state.newPet,
+                      bio: event.target.value
                     }
                 });
               break;
             case constants.animalInputTypes.DIET_RESTRICTIONS:
                 this.setState({
                     newPet: {
-                    ...this.state.newPet,
-                    dietRest: event.target.value
+                      ...this.state.newPet,
+                      dietRest: event.target.value
                     }
                 });
               break;
@@ -114,11 +132,9 @@ class AddPetForm extends React.Component {
             let response = await api.admin.addPet(data);
             if (response.data.status === "success") {
               alert("Successfully added a pet");
-              this.setState({
-                pet: response.data.pet,
-              }); 
+              window.location.reload();
             } else {
-              alert("Unable to add pet");
+              alert(`${response.data.message}`);
             }
           } catch (error) {
             alert("Error in adding a pet: " + error);
@@ -205,16 +221,10 @@ class AddPetForm extends React.Component {
             </Form.Group>
             <Form.Group>
                 <Form.Label className="sub-heading" >Hypoallergenic?</Form.Label>
-                <Form.Check type="checkbox" 
-                            className="checkboxes" 
-                            label="True" 
-                            onChange={(e) => this.handleisHypoAllergenicInput(e, constants.animalInputTypes.IS_HYPOALLERGENIC_TRUE)}
-                            onClick={this.setState({isHypoallergenicCheck: !this.state.isHypoallergenicCheck})}/>
-                <Form.Check type="checkbox" 
-                            className="checkboxes" 
-                            label="False" 
-                            onChange={(e) => this.handleisHypoAllergenicInput(e, constants.animalInputTypes.IS_HYPOALLERGENIC_FALSE)}
-                            onClick={this.setState({isHypoallergenicCheck: !this.state.isHypoallergenicCheck})}/>
+                <Form.Control as="select" onChange={(event) => this.onInputChange(event, constants.animalInputTypes.IS_HYPOALLERGENIC)}>
+                    <option value={"0"}>Yes</option>
+                    <option value={"1"}>No</option>
+                </Form.Control> 
             </Form.Group>
             <Form.Group>
               <Form.Control type="text" 

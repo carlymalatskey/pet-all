@@ -80,7 +80,7 @@ class User {
     }
 
     static createUserFromAPI(body) {
-        return new User(body.email, body.displayName, body.phoneNumber, body.adoptedPets, body.fosteredPets, body.savedPets, body.bio, false);
+        return new User(body.email, body.displayName, body.phoneNumber, body.adoptedPets, body.fosteredPets, body.savedPets, body.bio, body.isAdmin);
     }
 }
 

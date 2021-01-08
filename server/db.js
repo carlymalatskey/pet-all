@@ -16,9 +16,13 @@ const bucket = admin.storage().bucket();
 
 async function getPetById(id) {
     let petSnapshot = await petCollection.doc(id).get();
-    let pet = Pet.createPetFromFireBaseResponse(petSnapshot.data());
-    pet.id = petSnapshot.id; 
-    return pet;
+    if (petSnapshot.exists) {
+        let pet = Pet.createPetFromFireBaseResponse(petSnapshot.data());
+        pet.id = petSnapshot.id; 
+        return pet;
+    } else {
+        return undefined;
+    }
 }
 
 async function getUserById(id) {

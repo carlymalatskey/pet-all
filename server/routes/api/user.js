@@ -33,7 +33,6 @@ bio
 
 */
 router.put("/:id", async (req, res) => {
-    //TODO: what about isAdmin --- updates to the default: false; 
     let userId = req.params.id; 
     if (userId.length === 0) { 
         res.send({status: "error", message: "Id is invalid"});
@@ -95,7 +94,6 @@ This api allows you to get a user based on the user's id.
 The API should return all the user details (aside from password) and the users pets they own.
 */
 router.get("/:id/full", async (req, res) => {
-    //TODO: how is this different from the first request
     const id = req.params.id;
     let currentUser = await getUserById(id);
     currentUser.id = id;

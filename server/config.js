@@ -28,5 +28,5 @@ module.exports = {
     authentication: {
         userCookie: "petAdoptionUserId"
     },
-    port: 3000,
+    port: 5000,
 };

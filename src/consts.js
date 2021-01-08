@@ -26,12 +26,11 @@ const constants = {
         WEIGHT: "weight",
         COLOR: "color",
         BIO: "bio",
-        IS_HYPOALLERGENIC_TRUE: true,
-        IS_HYPOALLERGENIC_FALSE: false,
+        IS_HYPOALLERGENIC: "isHypoallergenic",
+        // IS_HYPOALLERGENIC_TRUE: true,
+        // IS_HYPOALLERGENIC_FALSE: false,
         DIET_RESTRICTIONS: "dietRest",
         PICTURE: "picture",
-        CHANGE_PICTURE_TRUE: true, 
-        CHANGE_PICTURE_FALSE: false
     }
 };
 

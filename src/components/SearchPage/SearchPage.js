@@ -11,7 +11,7 @@ class SearchPage extends React.Component {
     super(props);
     this.state = {
       search: '', // TODO: rename to searchInput
-      isBasicChecked: false,
+      isBasicChecked: true,
       isAdvancedChecked: false,
       petsFound: []
     }

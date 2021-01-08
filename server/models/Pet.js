@@ -33,8 +33,7 @@ class Pet {
         return new Pet(pet.id, pet.type, pet.name, pet.adoptionStatus, pet.picture, pet.height, pet.weight, pet.color, pet.bio, pet.isHypoallergenic, pet.dietRest, pet.breed);
     }
     static isAPIBodyValid(body) {
-        //TODO: handle diet restrictions validation?
-        return (body["id"].length > 0 && body["type"].toLowerCase().length > 0 && body["name"].toLowerCase().length > 0 && (body["adoptionStatus"].toLowerCase() == "available" || body["adoptionStatus"].toLowerCase() == "fostered" || body["adoptionStatus"].toLowerCase() == "adopted") && parseInt(body["height"]) > 0 && parseInt(body["weight"]) > 0 && (typeof body["isHypoallergenic"] === "boolean") && body["breed"].toLowerCase().length > 0 && body["color"].toLowerCase().length > 0);
+        return (body["id"].length > 0 && body["type"].toLowerCase().length > 0 && body["name"].toLowerCase().length > 0 && (body["adoptionStatus"].toLowerCase() == "available" || body["adoptionStatus"].toLowerCase() == "fostered" || body["adoptionStatus"].toLowerCase() == "adopted") && parseInt(body["height"]) >= 0 && parseInt(body["weight"]) >= 0 && (typeof body["isHypoallergenic"] === "boolean") && body["breed"].toLowerCase().length > 0 && body["color"].toLowerCase().length > 0);
     }
 }
 

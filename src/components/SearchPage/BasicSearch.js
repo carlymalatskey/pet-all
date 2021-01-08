@@ -34,9 +34,6 @@ class BasicSearch extends React.Component {
                         <Button variant="primary" type="submit" className={this.state.typeToFind == consts.animalTypes.CAT ? "selected-button" : "find-by-animal-button"} onClick={() => this.setState({typeToFind: consts.animalTypes.CAT})}>
                             <FontAwesomeIcon className="animal-icon" icon={faCat}/>
                             Find a cat
-                        </Button>   
-                        <Button variant="primary" type="submit" className={this.state.typeToFind == consts.animalTypes.OTHER ? "selected-button" : "other-pets-button"} onClick={() => this.setState({typeToFind: consts.animalTypes.OTHER})}>
-                            Find Other Pets
                         </Button>
                     </div>
                 </div>

@@ -34,8 +34,6 @@ class UserCard extends React.Component {
                             <Card.Title className="user-name">{this.props.user.displayName}</Card.Title>
                             <Card.Text>
                                 {`Email: ${this.props.user.email}`}
-                                {/* TODO: indicate whether admin or user */}
-                                {/* {this.props.isAdmin ? "Admin" : "User"} */}
                             </Card.Text>  
                     {this.state.open && 
                         <div id="example-collapse-text">

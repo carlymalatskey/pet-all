@@ -39,7 +39,6 @@ class NotLoggedInHome extends React.Component {
     }
 
     handleSignedUp(newUser) {
-        //TODO: notify the parent
         this.props.signedUp(newUser); 
     }
 

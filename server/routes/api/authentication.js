@@ -26,7 +26,7 @@ Phone number
 */
 
 router.post("/signup", (req, res) => {
-    const { email, password1, password2 } = req.body; // TODO: decrypt password
+    const { email, password1, password2 } = req.body; 
     let doPasswordsMatch = User.doPasswordsMatch(password1, password2);
     if (!doPasswordsMatch) {
         res.send({status: "error", message: "Passwords don't match"});
@@ -77,7 +77,6 @@ router.post("/login", (req, res) => {
 });
 
 // sign out 
-//TODO: put messages in front end
 router.get("/signout", (req, res) => {
     if (req.cookies.petAdoptionUserId) {
         res.clearCookie("petAdoptionUserId");
