@@ -1,0 +1,11 @@
+.find-a-pet-button {
+    display: block;
+    background-color:#2977C9; 
+    border-radius: 8px; 
+    border: none; 
+    color: white; 
+    cursor: pointer;
+    width: 100px; 
+    text-decoration: none; 
+    display: inline-block; 
+}
