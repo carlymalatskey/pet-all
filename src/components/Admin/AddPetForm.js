@@ -76,14 +76,6 @@ class AddPetForm extends React.Component {
                 }
               })
               break;
-            case constants.animalInputTypes.ADOPTION_STATUS:
-              this.setState({
-                  newPet: {
-                    ...this.state.newPet,
-                    adoptionStatus: event.target.value
-                  }
-              })
-              break;
             case constants.animalInputTypes.NAME:
                 this.setState({
                     newPet: {
@@ -119,6 +111,15 @@ class AddPetForm extends React.Component {
             default:
               break;
           }
+        }
+
+        handleAdoptionStatusInput(event) {
+          this.setState({
+            newPet: {
+              ...this.state.newPet,
+              adoptionStatus: event.target.value
+            }
+          })
         }
 
       handleAddPetSubmit = async (event) => {
@@ -184,12 +185,12 @@ class AddPetForm extends React.Component {
                             value={this.state.newPet.name}/>
             </Form.Group>
             <Form.Group>
-            {/*TODO: change type to select Available/Fostered/Adopted */}
-              <Form.Control type="text" 
-                            placeholder="Adoption Status" 
-                            className="pet-info-section" 
-                            onChange={(event) => this.onInputChange(event, constants.animalInputTypes.ADOPTION_STATUS)}
-                            value={this.state.newPet.adoptionStatus}/>
+                <Form.Label className="sub-heading" >Adoption Status?</Form.Label>
+                  <Form.Control as="select" onChange={(event) => this.handleAdoptionStatusInput(event)}>
+                      <option value={constants.adoptionStatusTypes.AVAILABLE}>Available</option>
+                      <option value={constants.adoptionStatusTypes.FOSTERED}>Fostered</option>
+                      <option value={constants.adoptionStatusTypes.ADOPTED}>Adopted</option>
+                  </Form.Control> 
             </Form.Group>
             <Form.Group>
               <Form.Control type="number" 

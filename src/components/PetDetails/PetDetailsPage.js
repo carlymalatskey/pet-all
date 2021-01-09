@@ -3,10 +3,9 @@ import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import "./PetDetailsPage.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 import api from "./../../api";
-import { alignPropType } from "react-bootstrap/esm/DropdownMenu";
 import PetDetailsText from "./PetDetailsText.js";
 
 class PetDetailsPage extends React.Component {
@@ -115,9 +114,9 @@ class PetDetailsPage extends React.Component {
                                     <div className="action-buttons">
                                         {this.isPetSaved() ? 
 
-                                            <Button variant="primary" type="submit" className="action-button-style" onClick={() => this.handleRemovedSavedPet()}><FontAwesomeIcon className="heart-icon" icon={faHeart}/> Unfavorite Me :(</Button>
+                                            <Button variant="primary" type="submit" className="action-button-style" onClick={() => this.handleRemovedSavedPet()}><FontAwesomeIcon icon={faHeart}/> Unfavorite Me :(</Button>
                                         :
-                                            <Button variant="primary" type="submit" className="action-button-style" onClick={() => this.handleSave()}><FontAwesomeIcon className="heart-icon" icon={faHeart}/> Favorite Me!</Button>
+                                            <Button variant="primary" type="submit" className="action-button-style" onClick={() => this.handleSave()}><FontAwesomeIcon icon={faHeart}/> Favorite Me!</Button>
                                         }
                                     {this.isUserOwningPet() ?
                                         <div>

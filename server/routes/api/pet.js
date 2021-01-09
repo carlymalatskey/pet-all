@@ -89,7 +89,7 @@ router.put("/:id", upload.single("file"), async (req, res, next) => {
     
     if (!req.file) {
         try {
-            let pet = Pet.creat4ePetFromAPI(req.body);
+            let pet = Pet.createPetFromAPI(req.body);
             let updatedPet = await petCollection.doc(pet.id).update(pet.getJson());
             res.send({"status": "success", "pet": updatedPet });
         } catch (error) {

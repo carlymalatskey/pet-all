@@ -26,15 +26,20 @@ class AppNavigation extends React.Component {
             <div className="left-header-labels">
                 <Link className="nav-bar-labels" to="/home"><FontAwesomeIcon className="navbar-icons" icon={faPaw}/>Home</Link>
                 <Link className="nav-bar-labels" to="/search"><FontAwesomeIcon className="navbar-icons" icon={faPaw}/>Search</Link>
+                {isSignedIn && 
+                  <Link to="/mypets"className="nav-bar-labels"><FontAwesomeIcon className="navbar-icons" icon={faPaw}/>My Pets</Link>
+                }
             </div>
           </div>
           {isSignedIn &&
              <div className="right-side-navbar">
                 <Link className="heart-label" to="/mypets"><FontAwesomeIcon className="heart-navbar-icon" icon={faHeart}/></Link>
-                <div>
-                  {isSignedIn && this.props.user.isAdmin && <FontAwesomeIcon className="navbar-icons user-admin-icon" icon={faUserShield}/>}
-                </div>
-                <NavDropdown title={<div className="username-label" ><FontAwesomeIcon className="navbar-icons" icon={faUserAlt}/>{this.props.user.displayName}</div>}>
+                <NavDropdown title={<div className="username-label">
+                  <FontAwesomeIcon className={this.props.user.isAdmin ? "hide" : "navbar-icons"} icon={faUserAlt}/>
+                  <FontAwesomeIcon className={this.props.user.isAdmin ? "navbar-icons" : "hide"} icon={faUserShield}/>
+                  {this.props.user.displayName}
+                  </div>
+                }>
                   <div className="dropdown-section">
                       <NavDropdown.Item className="dropdown-labels">
                           <Button

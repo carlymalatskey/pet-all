@@ -10,7 +10,7 @@ class SearchPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: '', // TODO: rename to searchInput
+      search: '', 
       isBasicChecked: true,
       isAdvancedChecked: false,
       petsFound: []

@@ -45,7 +45,9 @@
 }
 
 .navbar-icons {
-    padding-right: 2px; 
+    padding-right: 2px;
+    font-size: 12px;
+    margin-top: 3px; 
 }
 
 .user-admin-icon {
@@ -88,3 +90,8 @@
 .admin-labels {
     display: inline-grid; 
 }
+
+.hide {
+    display: none; 
+}
+

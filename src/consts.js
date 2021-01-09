@@ -27,8 +27,6 @@ const constants = {
         COLOR: "color",
         BIO: "bio",
         IS_HYPOALLERGENIC: "isHypoallergenic",
-        // IS_HYPOALLERGENIC_TRUE: true,
-        // IS_HYPOALLERGENIC_FALSE: false,
         DIET_RESTRICTIONS: "dietRest",
         PICTURE: "picture",
     }
