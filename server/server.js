@@ -11,8 +11,7 @@ const buildPath = path.join(__dirname, '..', 'build');
 app.use(express.static(buildPath));
 
 app.use(cors({
-    credentials: true,
-    origin: "http://localhost:3000"
+    credentials: true
 }));
 app.use(bodyParser.json());
 app.use(cookieParser());
